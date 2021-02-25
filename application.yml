@@ -1,14 +1,18 @@
-
 spring:
-  profiles: pro
+  profiles:
+    active: pro
 ---
 # 开发环境
+spring:
+  profiles: dev
 server:
   servlet:
     context-path: /dev
   port: 8888
 ---
 #生产环境
+spring:
+  profiles: pro
 server:
   servlet:
     context-path: /pro
