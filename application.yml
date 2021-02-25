@@ -1,56 +1,14 @@
-# 自定义属性（PropertySource 这个注解不会读取yml文件 存在主配置时，会覆盖掉自定义配置的属性）
-#student:
-#  name: 张三
-#actuator监控器
-server:
-  port: 9999
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-        exclude: env
-  server:
-    port: 8888
-info.company.name: 张三
-info.company.address: 厦门
-#info.project.groupid: @project.groupId@
-#info.project.artifactId: @project.artifactId@
-# 多环境配置（单文件/多文件） 此处采用单文件 --- 配置分割，spring.profiles.active选择环境
-spring:
-  profiles:
-    active: pro
-  datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-    username: root
-    password: root
-  redis:
-    host: 192.168.93.124
-    port: 6379
-    password: aoyexm
-    database: 0
-  cache:
-    type: redis
-    cache-names: mycache
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.boot02.mapper,com.boot02.entity
-#  type-aliases-package: com.boot02.entity
 
+spring:
+  profiles: pro
 ---
 # 开发环境
-spring:
-  profiles: dev
 server:
   servlet:
     context-path: /dev
   port: 8888
 ---
 #生产环境
-spring:
-  profiles: pro
 server:
   servlet:
     context-path: /pro
